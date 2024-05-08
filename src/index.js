@@ -1,17 +1,33 @@
+//Importamos React y ReactDOM
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import{BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+//Importamos Comoponentes
+import Header from './Components/Header/header';
+import Body from './Components/Body/body';
+import Menu from './Components/Menu/menu';
+import Footer from './Components/Footer/footer';
+import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom';
+import "./index.css";
+import { FavoritoProvider } from './Components/Context/favoritoContext';
+import { CarritoProvider } from './Components/Context/carritoContext';
+import { LoginProvider } from './Components/Context/loginContext';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+//Renderizamos el componente Peliculas en el elemento con id root
+ReactDOM.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <CarritoProvider>
+                <FavoritoProvider>
+                    <LoginProvider>
+                        <Header></Header>
+                        <Menu></Menu>
+                        <Body></Body>
+                        <Footer></Footer>
+                    </LoginProvider>
+                </FavoritoProvider>
+            </CarritoProvider>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
