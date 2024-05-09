@@ -16,12 +16,12 @@ import { LoginProvider } from './Components/Context/loginContext';
 //Renderizamos el componente Peliculas en el elemento con id root
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter forceRefresh = {true}>
             <CarritoProvider>
                 <FavoritoProvider>
                     <LoginProvider>
-                        <Header></Header>
-                        <Menu></Menu>
+                        {localStorage.getItem("idUsuario") > 0 && <Header></Header>}
+                        {localStorage.getItem("idUsuario") > 0 && <Menu></Menu>}
                         <Body></Body>
                         <Footer></Footer>
                     </LoginProvider>

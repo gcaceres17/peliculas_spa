@@ -39,8 +39,12 @@ export const FavoritoProvider = (props) => {
     }
 
     useEffect(() => {
-        handleObtenerFavorito();
+        const idUsuario = localStorage.getItem("idUsuario");
+        if (idUsuario) {
+            handleObtenerFavorito();
+        }
     }, []);
+    
 
     return (
         <FavoritoContext.Provider value={{cantiFav, itemsFav, setCantFavoritos, handleAgregarFavorito, handleEliminarFavorito}}>

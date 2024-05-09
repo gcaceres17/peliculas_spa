@@ -6,6 +6,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import StarIcon from '@mui/icons-material/Star';
 import AppsIcon from '@mui/icons-material/Apps';
 import { useHistory } from 'react-router-dom';
+import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
+
 
 const Menu = () => {
   const history = useHistory();
@@ -45,6 +47,16 @@ const Menu = () => {
       onClick={() => history.push({ pathname: "/peliculas" })}
       startIcon={<AppsIcon color='action' />}>
         Todas
+      </Button>
+      &nbsp;&nbsp;
+      <Button variant="contained"
+      onClick={() => {
+        localStorage.clear()
+        history.push({ pathname: "/" })
+      }}
+      startIcon={<LogoutTwoToneIcon color='action' />}
+      >
+        logout
       </Button>
     </nav>
   )
