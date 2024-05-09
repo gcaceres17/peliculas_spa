@@ -9,6 +9,7 @@ import VpnKeyTwoToneIcon from '@mui/icons-material/VpnKeyTwoTone';
 import { useHistory} from 'react-router-dom';
 import { LoginContext } from '../Context/loginContext';
 import { FavoritoContext } from '../Context/favoritoContext';
+import sha1 from 'sha1'
 
 const Login = () => {
     const [usuario, setUsuario] = useState({
@@ -37,9 +38,10 @@ const Login = () => {
     const handleChange = (e) => {
         setUsuario({
             ...usuario,
-            [e.target.name]: e.target.value
-            
+            [e.target.name]: e.target.name === "password" ? 
+            sha1(e.target.value) : e.target.value
         })
+        console.log(usuario)
     }
 
 

@@ -7,7 +7,7 @@ const Buscar = (props) => {
   const [peliculas, setPelicula] = useState([]);
 
   const handleBuscar = async (buscar) => {
-    const { data: peliculas } = await buscarPor(buscar);
+    const { data: peliculas } = await buscarPor(buscar, localStorage.getItem("idUsuario"));
     setPelicula(peliculas);
   };
 

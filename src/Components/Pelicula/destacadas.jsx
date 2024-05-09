@@ -12,7 +12,7 @@ const Destacadas = () => {
   }, []);
 
   const cargarPeliculas = async () => {
-    const {data: destacadas} = await obtenerDestacadas(5);
+    const {data: destacadas} = await obtenerDestacadas(5, localStorage.getItem('idUsuario'));
     setPeliculas(destacadas);
   }
 
